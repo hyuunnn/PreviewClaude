@@ -60,7 +60,7 @@ Permissions can be requested from the app settings (⚙).
 
 ## Limitations
 
-- **Claude only** — Uses [`claude -p`](https://code.claude.com/docs/ko/cli-reference) CLI, so Claude Code must be installed ([Thariq's Post](https://x.com/trq212/status/2024212380142752025))
+- **Claude only** — Uses [`claude -p`](https://code.claude.com/docs/ko/cli-reference) CLI, so Claude Code must be installed ([Thariq's Post](https://x.com/trq212/status/2024212380142752025), [archive](images/post.png))
 - **macOS only** — Uses macOS native frameworks: ScreenCaptureKit, Vision, Accessibility API
 - Capture translate uses the same Vision OCR engine as macOS Live Text
 
