@@ -9,7 +9,7 @@ let package = Package(
         .executableTarget(
             name: "PreviewClaude",
             path: ".",
-            exclude: ["build", "build.sh", "README.md", "README_ko.md"],
+            exclude: ["build", "build.sh", "README.md", "README_ko.md", "images"],
             sources: ["Sources"],
             resources: [
                 .process("Resources")

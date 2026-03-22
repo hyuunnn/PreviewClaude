@@ -44,8 +44,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NotificationCenter.default.post(name: .translateClipboard, object: nil)
         }
         HotkeyManager.shared.onLiveText = { [weak self] in
-            self?.panelController.show()
             Self.captureAndOCR { result in
+                self?.panelController.show()
                 switch result {
                 case .success(let text):
                     NSPasteboard.general.clearContents()
