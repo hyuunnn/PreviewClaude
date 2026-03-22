@@ -14,6 +14,10 @@ Vibe coded with **Claude Opus 4.6** via [Claude Code](https://github.com/anthrop
 |:---:|:---:|
 | ![Capture Translate](images/1.png) | ![Select Translate](images/2.png) |
 
+### Settings
+
+<img src="images/3.png" width="300">
+
 ## Features
 
 - **Toggle Panel (⌘⇧\\)** — Show/hide the floating panel
