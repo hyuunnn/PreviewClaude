@@ -16,7 +16,7 @@ Vibe coded with **Claude Opus 4.6** via [Claude Code](https://github.com/anthrop
 
 ### Settings
 
-<img src="images/3.png" width="600">
+<img src="images/3.png" width="500">
 
 ## Features
 
