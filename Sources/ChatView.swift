@@ -112,7 +112,7 @@ struct ChatView: View {
     private var messagesList: some View {
         ScrollViewReader { proxy in
             ScrollView {
-                LazyVStack(alignment: .leading, spacing: 12) {
+                LazyVStack(alignment: .leading, spacing: 8) {
                     if viewModel.messages.isEmpty {
                         emptyState
                     }
@@ -264,22 +264,44 @@ struct ChatView: View {
 
 private struct MessageBubbleView: View {
     let message: ChatMessage
+    @State private var copied = false
 
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
             if message.role == .assistant { avatar("C", color: .orange) }
 
-            Text(message.content.isEmpty ? "..." : message.content)
-                .textSelection(.enabled)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 8)
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(message.role == .user
-                              ? Color.accentColor.opacity(0.15)
-                              : Color.secondary.opacity(0.1))
-                )
-                .frame(maxWidth: .infinity, alignment: message.role == .user ? .trailing : .leading)
+            VStack(alignment: message.role == .user ? .trailing : .leading, spacing: 4) {
+                Text(message.content.isEmpty ? "..." : message.content)
+                    .textSelection(.enabled)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(message.role == .user
+                                  ? Color.accentColor.opacity(0.15)
+                                  : Color.secondary.opacity(0.1))
+                    )
+
+                if message.role == .assistant && !message.content.isEmpty {
+                    Button(action: {
+                        NSPasteboard.general.clearContents()
+                        NSPasteboard.general.setString(message.content, forType: .string)
+                        copied = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            copied = false
+                        }
+                    }) {
+                        HStack(spacing: 3) {
+                            Image(systemName: copied ? "checkmark" : "doc.on.doc")
+                            Text(copied ? "Copied" : "Copy")
+                        }
+                        .font(.caption2)
+                        .foregroundColor(copied ? .green : .secondary)
+                    }
+                    .buttonStyle(.borderless)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: message.role == .user ? .trailing : .leading)
 
             if message.role == .user { avatar("U", color: .blue) }
         }
