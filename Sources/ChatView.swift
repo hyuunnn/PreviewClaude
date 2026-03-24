@@ -3,6 +3,11 @@ import SwiftUI
 struct ChatView: View {
     @StateObject private var viewModel = ChatViewModel()
     @State private var showSettings = false
+    @AppStorage("sourceLang") private var sourceLang = "auto"
+    @AppStorage("targetLang") private var targetLang = "ko"
+
+    private static let sourceOptions = ["auto", "en", "ko", "ja", "zh"]
+    private static let targetOptions = ["ko", "en", "ja", "zh"]
 
     var body: some View {
         VStack(spacing: 0) {
@@ -49,17 +54,41 @@ struct ChatView: View {
     }
 
     private var quickActions: some View {
-        HStack(spacing: 8) {
-            quickActionButton(L("action.translate"), action: .translate)
-            quickActionButton(L("action.summarize"), action: .summarize)
-            quickActionButton(L("action.explain"), action: .explain)
-            Spacer()
-            VStack(alignment: .trailing, spacing: 2) {
-                Text("⌘⇧, \(L("settings.selectTranslate"))")
-                Text("⌘⇧. \(L("settings.captureTranslate"))")
+        VStack(spacing: 4) {
+            HStack(spacing: 4) {
+                Picker("", selection: $sourceLang) {
+                    ForEach(Self.sourceOptions, id: \.self) { code in
+                        Text(ChatViewModel.langNames[code] ?? code).tag(code)
+                    }
+                }
+                .frame(width: 100)
+
+                Image(systemName: "arrow.right")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+
+                Picker("", selection: $targetLang) {
+                    ForEach(Self.targetOptions, id: \.self) { code in
+                        Text(ChatViewModel.langNames[code] ?? code).tag(code)
+                    }
+                }
+                .frame(width: 100)
+
+                Spacer()
+
+                quickActionButton(L("action.translate"), action: .translate)
+                quickActionButton(L("action.summarize"), action: .summarize)
+                quickActionButton(L("action.explain"), action: .explain)
             }
-            .font(.caption2)
-            .foregroundColor(.secondary)
+            HStack {
+                Spacer()
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text("⌘⇧, \(L("settings.selectTranslate"))")
+                    Text("⌘⇧. \(L("settings.captureTranslate"))")
+                }
+                .font(.caption2)
+                .foregroundColor(.secondary)
+            }
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 6)

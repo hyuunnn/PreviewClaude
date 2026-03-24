@@ -26,6 +26,12 @@ class ChatViewModel: ObservableObject {
     private var model: String { UserDefaults.standard.string(forKey: "claudeModel") ?? "" }
     private var fastModel: String { UserDefaults.standard.string(forKey: "fastModel") ?? "haiku" }
     private var systemPrompt: String { UserDefaults.standard.string(forKey: "systemPrompt") ?? "" }
+    private var sourceLang: String { UserDefaults.standard.string(forKey: "sourceLang") ?? "auto" }
+    private var targetLang: String { UserDefaults.standard.string(forKey: "targetLang") ?? "ko" }
+
+    static let langNames: [String: String] = [
+        "auto": "Auto", "en": "English", "ko": "한국어", "ja": "日本語", "zh": "中文"
+    ]
 
     private static let shellSetup: (path: String, env: [String: String]) = {
         let process = Process()
@@ -89,7 +95,16 @@ class ChatViewModel: ObservableObject {
     func sendWithAction(_ action: QuickAction, text: String) {
         let prompt: String
         switch action {
-        case .translate: prompt = "<text> 안의 텍스트만 번역해. 부연설명, 원문 반복, 메모, 태그 없이 번역 결과만 출력해.\n\n<text>\(text)</text>"
+        case .translate:
+            let target = Self.langNames[targetLang] ?? targetLang
+            let langInstruction: String
+            if sourceLang == "auto" {
+                langInstruction = "\(target)로 번역해"
+            } else {
+                let source = Self.langNames[sourceLang] ?? sourceLang
+                langInstruction = "\(source)를 \(target)로 번역해"
+            }
+            prompt = "<text> 안의 텍스트만 \(langInstruction). 부연설명, 원문 반복, 메모, 태그 없이 번역 결과만 출력해.\n\n<text>\(text)</text>"
         case .summarize: prompt = "<text> 안의 텍스트를 요약만 해. 부연설명 없이 요약 결과만 출력해.\n\n<text>\(text)</text>"
         case .explain: prompt = "<text> 안의 텍스트를 쉽게 설명해줘:\n\n<text>\(text)</text>"
         }
