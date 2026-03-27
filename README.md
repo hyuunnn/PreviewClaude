@@ -12,11 +12,11 @@ Vibe coded with **Claude Opus 4.6** via [Claude Code](https://github.com/anthrop
 
 | Capture Translate (⌘⇧.) | Select Translate (⌘⇧,) |
 |:---:|:---:|
-| ![Capture Translate](images/1.png) | ![Select Translate](images/2.png) |
+| ![Capture Translate](images/01.png) | ![Select Translate](images/02.png) |
 
 ### Settings
 
-<img src="images/3.png" width="500">
+<img src="images/03.png" width="500">
 
 ## Features
 
@@ -25,7 +25,7 @@ Vibe coded with **Claude Opus 4.6** via [Claude Code](https://github.com/anthrop
 - **Capture Translate (⌘⇧.)** — Captures the active window and extracts text via Vision OCR, then translates (requires Screen Recording permission)
 - **Quick Actions** — Translate / Summarize / Explain buttons
 - **Model Selection** — Separate model choice for chat and quick actions (sonnet, haiku, opus)
-- **System Prompt** — Customize translation style (e.g., keep IT terms in original, translate English to Korean)
+- **System Prompt** — Customize translation style (e.g., keep IT terms in original)
 - **Localized UI** — Automatically switches between Korean/English based on system language
 - **Floating Panel** — Always-on-top window for use alongside Preview
 - **Menu Bar App** — No dock icon
