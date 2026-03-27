@@ -57,7 +57,7 @@ cp -r build/PreviewClaude.app /Applications/
 
 ## 제한사항
 
-- **Claude 전용** — [`claude -p`](https://code.claude.com/docs/ko/cli-reference) CLI를 사용하므로 Claude Code가 설치되어 있어야 합니다 ([Thariq's Post](https://x.com/trq212/status/2024212380142752025), [archive](image/post.png))
+- **Claude 전용** — [`claude -p`](https://code.claude.com/docs/ko/cli-reference) CLI를 사용하므로 Claude Code가 설치되어 있어야 합니다 ([Thariq's Post](https://x.com/trq212/status/2024212380142752025), [archive](images/post.png))
 - **macOS 전용** — ScreenCaptureKit, Vision, Accessibility API 등 macOS 네이티브 프레임워크를 사용합니다
 - 화면 캡처 번역은 macOS의 Live Text와 동일한 Vision OCR 엔진을 사용합니다
 
