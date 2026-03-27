@@ -14,6 +14,10 @@ Vibe coded with **Claude Opus 4.6** via [Claude Code](https://github.com/anthrop
 |:---:|:---:|
 | ![Capture Translate](images/01.png) | ![Select Translate](images/02.png) |
 
+| Image Drop Translate |
+|:---:|
+| ![Image Drop Translate](images/04.png) |
+
 ### Settings
 
 <img src="images/03.png" width="500">
@@ -23,6 +27,7 @@ Vibe coded with **Claude Opus 4.6** via [Claude Code](https://github.com/anthrop
 - **Toggle Panel (⌘⇧\\)** — Show/hide the floating panel
 - **Select Translate (⌘⇧,)** — Drag to select text, auto-copy + translate (requires Accessibility permission)
 - **Capture Translate (⌘⇧.)** — Captures the active window and extracts text via Vision OCR, then translates (requires Screen Recording permission)
+- **Image Drop Translate** — Drag & drop an image onto the panel to extract text via Vision OCR and translate
 - **Quick Actions** — Translate / Summarize / Explain buttons
 - **Model Selection** — Separate model choice for chat and quick actions (sonnet, haiku, opus)
 - **System Prompt** — Customize translation style (e.g., keep IT terms in original)
