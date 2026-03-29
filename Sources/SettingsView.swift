@@ -2,8 +2,7 @@ import SwiftUI
 import ApplicationServices
 
 struct SettingsView: View {
-    @AppStorage("claudeModel") private var model = ""
-    @AppStorage("fastModel") private var fastModel = "haiku"
+    @AppStorage("claudeModel") private var model = "sonnet"
     @AppStorage("systemPrompt") private var systemPrompt = ""
     @Environment(\.dismiss) private var dismiss
 
@@ -44,28 +43,14 @@ struct SettingsView: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(L("settings.chatModel"))
+                Text(L("settings.model"))
                     .font(.headline)
-                Picker("", selection: $model) {
-                    Text(L("settings.defaultModel")).tag("")
-                    Text("Haiku").tag("haiku")
-                    Text("Sonnet").tag("sonnet")
-                    Text("Opus").tag("opus")
-                }
-                .labelsHidden()
-                .pickerStyle(.segmented)
-            }
-
-            VStack(alignment: .leading, spacing: 4) {
-                Text(L("settings.fastModel"))
-                    .font(.headline)
-                Picker("", selection: $fastModel) {
-                    Text(L("settings.fastHaiku")).tag("haiku")
-                    Text("Sonnet").tag("sonnet")
-                    Text("Opus").tag("opus")
-                }
-                .labelsHidden()
-                .pickerStyle(.segmented)
+                TextField(L("settings.modelPlaceholder"), text: $model)
+                    .textFieldStyle(.roundedBorder)
+                    .font(.body)
+                Text(L("settings.modelDesc"))
+                    .font(.caption)
+                    .foregroundColor(.secondary)
             }
 
             VStack(alignment: .leading, spacing: 4) {

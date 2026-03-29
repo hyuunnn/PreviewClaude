@@ -24,8 +24,7 @@ class ChatViewModel: ObservableObject {
     private var observer: Any?
     private var ocrErrorObserver: Any?
 
-    private var model: String { UserDefaults.standard.string(forKey: "claudeModel") ?? "" }
-    private var fastModel: String { UserDefaults.standard.string(forKey: "fastModel") ?? "haiku" }
+    private var model: String { UserDefaults.standard.string(forKey: "claudeModel") ?? "sonnet" }
     private var systemPrompt: String { UserDefaults.standard.string(forKey: "systemPrompt") ?? "" }
     private var sourceLang: String { UserDefaults.standard.string(forKey: "sourceLang") ?? "auto" }
     private var targetLang: String { UserDefaults.standard.string(forKey: "targetLang") ?? "ko" }
@@ -110,7 +109,7 @@ class ChatViewModel: ObservableObject {
         case .explain: prompt = "<text> 안의 텍스트를 쉽게 설명해줘:\n\n<text>\(text)</text>"
         }
         let idx = appendMessages(userContent: prompt)
-        runClaude(prompt: buildPrompt(currentMessage: prompt), responseIndex: idx, fast: true)
+        runClaude(prompt: buildPrompt(currentMessage: prompt), responseIndex: idx)
     }
 
     func pasteFromClipboard() -> String? {
@@ -211,7 +210,7 @@ class ChatViewModel: ObservableObject {
         return parts.joined(separator: "\n\n")
     }
 
-    private func runClaude(prompt: String, responseIndex idx: Int, fast: Bool = false) {
+    private func runClaude(prompt: String, responseIndex idx: Int) {
         cancelCurrentRequest()
         isLoading = true
 
@@ -220,8 +219,7 @@ class ChatViewModel: ObservableObject {
         process.environment = Self.shellSetup.env
 
         var args = ["-p"]
-        let effectiveModel = fast ? fastModel : model
-        if !effectiveModel.isEmpty { args += ["--model", effectiveModel] }
+        if !model.isEmpty { args += ["--model", model] }
         let sp = systemPrompt.trimmingCharacters(in: .whitespacesAndNewlines)
         if !sp.isEmpty { args += ["--system-prompt", sp] }
         process.arguments = args

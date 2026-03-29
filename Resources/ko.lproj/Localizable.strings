@@ -16,10 +16,9 @@
 "settings.screenCapture" = "화면 캡처";
 "settings.requestAccess" = "권한 요청";
 "settings.permDesc" = "손쉬운 사용: ⌘⇧, 선택 번역 / 화면 캡처: ⌘⇧. 화면 캡처 번역\n화면 캡처 권한은 허용 후 앱 재시작이 필요합니다";
-"settings.chatModel" = "채팅 모델";
-"settings.defaultModel" = "기본값 (CLI 설정)";
-"settings.fastModel" = "퀵 액션 모델 (번역/요약/설명)";
-"settings.fastHaiku" = "Haiku";
+"settings.model" = "모델";
+"settings.modelPlaceholder" = "예: sonnet, haiku, opus, gemini-2.5-flash";
+"settings.modelDesc" = "CLI에 전달할 모델명을 입력하세요";
 "settings.systemPrompt" = "시스템 프롬프트 (선택)";
 "settings.hotkeys" = "단축키";
 "settings.selectTranslate" = "선택 번역";

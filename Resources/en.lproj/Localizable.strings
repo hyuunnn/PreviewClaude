@@ -16,10 +16,9 @@
 "settings.screenCapture" = "Screen Capture";
 "settings.requestAccess" = "Request Access";
 "settings.permDesc" = "Accessibility: ⌘⇧, Select Translate / Screen Capture: ⌘⇧. Capture Translate\nScreen capture requires app restart after granting permission";
-"settings.chatModel" = "Chat Model";
-"settings.defaultModel" = "Default (CLI setting)";
-"settings.fastModel" = "Quick Action Model (Translate/Summarize/Explain)";
-"settings.fastHaiku" = "Haiku (fast)";
+"settings.model" = "Model";
+"settings.modelPlaceholder" = "e.g. sonnet, haiku, opus, gemini-2.5-flash";
+"settings.modelDesc" = "Enter model name to pass to CLI";
 "settings.systemPrompt" = "System Prompt (optional)";
 "settings.hotkeys" = "Hotkeys";
 "settings.selectTranslate" = "Select Translate";
