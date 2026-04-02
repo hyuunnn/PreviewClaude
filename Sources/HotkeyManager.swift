@@ -10,6 +10,7 @@ private func hotkeyCallback(_: EventHandlerCallRef?, _ event: EventRef?, _: Unsa
     case 1: HotkeyManager.shared.onTogglePanel?()
     case 2: HotkeyManager.shared.onTranslate?()
     case 3: HotkeyManager.shared.onLiveText?()
+    case 4: HotkeyManager.shared.onRegionCapture?()
     default: break
     }
     return noErr
@@ -21,6 +22,7 @@ class HotkeyManager {
     var onTogglePanel: (() -> Void)?
     var onTranslate: (() -> Void)?
     var onLiveText: (() -> Void)?
+    var onRegionCapture: (() -> Void)?
 
     private var hotKeyRefs: [EventHotKeyRef?] = []
 
@@ -37,6 +39,8 @@ class HotkeyManager {
         registerKey(keyCode: UInt32(kVK_ANSI_Comma), modifiers: UInt32(cmdKey | shiftKey), id: 2)
         // ⌘⇧. — capture + OCR + translate
         registerKey(keyCode: UInt32(kVK_ANSI_Period), modifiers: UInt32(cmdKey | shiftKey), id: 3)
+        // ⌘⇧' — region capture + OCR + translate
+        registerKey(keyCode: UInt32(kVK_ANSI_Quote), modifiers: UInt32(cmdKey | shiftKey), id: 4)
     }
 
     func unregister() {

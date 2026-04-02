@@ -23,6 +23,7 @@
 "settings.hotkeys" = "Hotkeys";
 "settings.selectTranslate" = "Select Translate";
 "settings.captureTranslate" = "Capture Translate";
+"settings.regionCaptureTranslate" = "Region Capture Translate";
 "settings.close" = "Close";
 "error.ocrFail" = "OCR failed";
 "error.noWindow" = "No window found to capture";

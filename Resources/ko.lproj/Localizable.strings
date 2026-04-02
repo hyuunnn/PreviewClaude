@@ -23,6 +23,7 @@
 "settings.hotkeys" = "단축키";
 "settings.selectTranslate" = "선택 번역";
 "settings.captureTranslate" = "화면 캡처 번역";
+"settings.regionCaptureTranslate" = "영역 캡처 번역";
 "settings.close" = "닫기";
 "error.ocrFail" = "OCR 실패";
 "error.noWindow" = "캡처할 창을 찾을 수 없습니다";

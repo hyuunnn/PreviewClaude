@@ -27,6 +27,7 @@ extension Notification.Name {
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     let panelController = PanelController()
+    private var regionCaptureWindow: RegionCaptureWindow?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let chatView = ChatView()
@@ -44,22 +45,78 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NotificationCenter.default.post(name: .translateClipboard, object: nil)
         }
         HotkeyManager.shared.onLiveText = { [weak self] in
-            Self.captureAndOCR { result in
-                self?.panelController.show()
-                switch result {
-                case .success(let text):
-                    NSPasteboard.general.clearContents()
-                    NSPasteboard.general.setString(text, forType: .string)
-                    NotificationCenter.default.post(name: .translateClipboard, object: nil)
-                case .failure(let error):
-                    NotificationCenter.default.post(name: .ocrError, object: error.localizedDescription)
-                }
-            }
+            Self.captureAndOCR { result in self?.handleOCRResult(result) }
+        }
+        HotkeyManager.shared.onRegionCapture = { [weak self] in
+            self?.startRegionCapture()
         }
         HotkeyManager.shared.register()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.panelController.show()
+        }
+    }
+
+    private func handleOCRResult(_ result: Result<String, OCRError>) {
+        panelController.show()
+        switch result {
+        case .success(let text):
+            NSPasteboard.general.clearContents()
+            NSPasteboard.general.setString(text, forType: .string)
+            NotificationCenter.default.post(name: .translateClipboard, object: nil)
+        case .failure(let error):
+            NotificationCenter.default.post(name: .ocrError, object: error.localizedDescription)
+        }
+    }
+
+    private func startRegionCapture() {
+        let overlay = RegionCaptureWindow()
+        regionCaptureWindow = overlay
+        overlay.onComplete = { [weak self] cgRect in
+            let overlayID = CGWindowID(overlay.windowNumber)
+            overlay.orderOut(nil)
+            self?.regionCaptureWindow = nil
+            guard let cgRect else { return }
+            Self.captureRegionAndOCR(cgRect, excludingWindowID: overlayID) { result in
+                self?.handleOCRResult(result)
+            }
+        }
+        overlay.beginCapture()
+    }
+
+    private static func captureRegionAndOCR(_ rect: CGRect, excludingWindowID: CGWindowID, completion: @escaping (Result<String, OCRError>) -> Void) {
+        Task {
+            do {
+                let content = try await SCShareableContent.excludingDesktopWindows(false, onScreenWindowsOnly: true)
+                let center = CGPoint(x: rect.midX, y: rect.midY)
+                guard let display = content.displays.first(where: { $0.frame.contains(center) })
+                        ?? content.displays.first else {
+                    await MainActor.run { completion(.failure(.noWindow)) }
+                    return
+                }
+
+                let localRect = CGRect(x: rect.origin.x - display.frame.origin.x,
+                                       y: rect.origin.y - display.frame.origin.y,
+                                       width: rect.width, height: rect.height)
+
+                let excludeWindows = content.windows.filter { $0.windowID == excludingWindowID }
+                let filter = SCContentFilter(display: display, excludingWindows: excludeWindows)
+                let config = SCStreamConfiguration()
+                config.sourceRect = localRect
+                config.width = Int(rect.width * 2)
+                config.height = Int(rect.height * 2)
+
+                let image = try await SCScreenshotManager.captureImage(contentFilter: filter, configuration: config)
+                let text = try performOCR(on: image)
+
+                if text.isEmpty {
+                    await MainActor.run { completion(.failure(.noText)) }
+                } else {
+                    await MainActor.run { completion(.success(text)) }
+                }
+            } catch {
+                await MainActor.run { completion(.failure(.captureError(error.localizedDescription))) }
+            }
         }
     }
 
@@ -75,6 +132,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return nil
         }
         return selectedText as? String
+    }
+
+    private static func performOCR(on image: CGImage) throws -> String {
+        let request = VNRecognizeTextRequest()
+        request.recognitionLevel = .accurate
+        request.recognitionLanguages = ["en", "ko", "ja", "zh-Hans", "zh-Hant"]
+        request.usesLanguageCorrection = true
+        let handler = VNImageRequestHandler(cgImage: image, options: [:])
+        try handler.perform([request])
+        return request.results?
+            .compactMap { $0.topCandidates(1).first?.string }
+            .joined(separator: "\n") ?? ""
     }
 
     enum OCRError: LocalizedError {
@@ -110,18 +179,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 config.height = Int(target.frame.height * 2)
 
                 let image = try await SCScreenshotManager.captureImage(contentFilter: filter, configuration: config)
-
-                let request = VNRecognizeTextRequest()
-                request.recognitionLevel = .accurate
-                request.recognitionLanguages = ["en", "ko", "ja", "zh-Hans", "zh-Hant"]
-                request.usesLanguageCorrection = true
-
-                let handler = VNImageRequestHandler(cgImage: image, options: [:])
-                try handler.perform([request])
-
-                let text = request.results?
-                    .compactMap { $0.topCandidates(1).first?.string }
-                    .joined(separator: "\n") ?? ""
+                let text = try performOCR(on: image)
 
                 if text.isEmpty {
                     await MainActor.run { completion(.failure(.noText)) }

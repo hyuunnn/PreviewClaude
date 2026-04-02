@@ -72,6 +72,7 @@ struct SettingsView: View {
                     Label("⌘⇧\\ \(L("menu.toggle"))", systemImage: "macwindow")
                     Label("⌘⇧, \(L("settings.selectTranslate"))", systemImage: "character.book.closed")
                     Label("⌘⇧. \(L("settings.captureTranslate"))", systemImage: "camera.viewfinder")
+                    Label("⌘⇧' \(L("settings.regionCaptureTranslate"))", systemImage: "rectangle.dashed")
                 }
                 .font(.callout)
                 .foregroundColor(.secondary)
