@@ -14,9 +14,13 @@ OCR로 추출한 텍스트는 잘못된 개행, 누락된 글자, 깨진 단어 
 |:---:|:---:|
 | ![화면 캡처 번역](images/01.png) | ![선택 번역](images/02.png) |
 
-| 이미지 드롭 번역 | 설정 |
+| 영역 캡처 번역 (⌘⇧') | 이미지 드롭 번역 |
 |:---:|:---:|
-| <img src="images/04.png" width="80%"> | <img src="images/03.png" width="80%"> |
+| ![영역 캡처 번역](images/06.png) | <img src="images/04.png" width="80%"> |
+
+| 설정 |
+|:---:|
+| <img src="images/03.png" width="80%"> |
 
 ## 주요 기능
 

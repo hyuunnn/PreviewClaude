@@ -16,9 +16,13 @@ Vibe coded with **Claude Opus 4.6** via [Claude Code](https://github.com/anthrop
 |:---:|:---:|
 | ![Capture Translate](images/01.png) | ![Select Translate](images/02.png) |
 
-| Image Drop Translate | Settings |
+| Region Capture Translate (⌘⇧') | Image Drop Translate |
 |:---:|:---:|
-| <img src="images/04.png" width="80%"> | <img src="images/03.png" width="80%"> |
+| ![Region Capture Translate](images/06.png) | <img src="images/04.png" width="80%"> |
+
+| Settings |
+|:---:|
+| <img src="images/03.png" width="80%"> |
 
 ## Features
 
