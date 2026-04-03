@@ -69,7 +69,9 @@ struct GeminiProvider: LLMProvider {
 
     func buildArguments(model: String, systemPrompt: String) -> [String] {
         let sp = systemPrompt.trimmingCharacters(in: .whitespacesAndNewlines)
-        var args = ["-p", sp, "--output-format", "text"]
+        var args = [String]()
+        if !sp.isEmpty { args += ["-p", sp] }
+        args += ["--output-format", "text"]
         if !model.isEmpty { args += ["-m", model] }
         return args
     }
