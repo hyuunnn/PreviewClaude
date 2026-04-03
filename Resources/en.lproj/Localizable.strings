@@ -20,7 +20,7 @@
 "settings.providerDesc" = "Select which CLI tool to use";
 "settings.model" = "Model";
 "settings.modelPlaceholder.claude" = "e.g. sonnet, haiku, opus";
-"settings.modelPlaceholder.codex" = "e.g. gpt-4.1-mini, o4-mini, o3";
+"settings.modelPlaceholder.codex" = "e.g. gpt-5.4-mini, gpt-5.4, gpt-5.3-codex";
 "settings.modelPlaceholder.gemini" = "e.g. gemini-2.5-flash, gemini-2.5-pro";
 "settings.modelPlaceholder.qwen" = "e.g. qwen-plus-latest, qwen-flash-latest";
 "settings.modelDesc" = "Enter model name to pass to CLI";

@@ -20,7 +20,7 @@
 "settings.providerDesc" = "사용할 CLI 도구를 선택하세요";
 "settings.model" = "모델";
 "settings.modelPlaceholder.claude" = "예: sonnet, haiku, opus";
-"settings.modelPlaceholder.codex" = "예: gpt-4.1-mini, o4-mini, o3";
+"settings.modelPlaceholder.codex" = "예: gpt-5.4-mini, gpt-5.4, gpt-5.3-codex";
 "settings.modelPlaceholder.gemini" = "예: gemini-2.5-flash, gemini-2.5-pro";
 "settings.modelPlaceholder.qwen" = "예: qwen-plus-latest, qwen-flash-latest";
 "settings.modelDesc" = "CLI에 전달할 모델명을 입력하세요";
