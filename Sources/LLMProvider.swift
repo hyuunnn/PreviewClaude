@@ -22,7 +22,7 @@ struct ClaudeProvider: LLMProvider {
     let defaultModel = "sonnet"
     let binaryName = "claude"
     func buildArguments(model: String, systemPrompt: String) -> [String] {
-        var args = ["-p", "--no-session-persistence"]
+        var args = ["-p", "--no-session-persistence", "--effort", "low"]
         if !model.isEmpty { args += ["--model", model] }
         let sp = systemPrompt.trimmingCharacters(in: .whitespacesAndNewlines)
         if !sp.isEmpty { args += ["--system-prompt", sp] }
