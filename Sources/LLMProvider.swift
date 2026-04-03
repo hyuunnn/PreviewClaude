@@ -45,7 +45,7 @@ struct CodexProvider: LLMProvider {
     let binaryName = "codex"
 
     func buildArguments(model: String, systemPrompt: String) -> [String] {
-        var args = ["exec", "--skip-git-repo-check", "--ephemeral"]
+        var args = ["exec", "--skip-git-repo-check", "--ephemeral", "-c", "model_reasoning_effort=\"low\""]
         if !model.isEmpty { args += ["-m", model] }
         return args
     }
