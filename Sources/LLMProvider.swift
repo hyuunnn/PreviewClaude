@@ -41,7 +41,7 @@ struct CodexProvider: LLMProvider {
     let displayName = "Codex"
     let avatarLetter = "X"
     let avatarColor = Color.green
-    let defaultModel = "gpt-5.4-mini"
+    let defaultModel = "gpt-5.4"
     let binaryName = "codex"
 
     func buildArguments(model: String, systemPrompt: String) -> [String] {
