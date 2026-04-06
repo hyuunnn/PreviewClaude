@@ -3,7 +3,7 @@
 # PreviewLLM
 
 ## Purpose
-A macOS menu-bar utility that pairs with Preview.app to provide LLM-powered translation, summarization, and explanation of OCR-extracted text. It captures screen content or selected text via system-wide hotkeys, runs OCR through Apple Vision, and streams the result to a CLI-based LLM (Claude, Codex, Gemini, or Qwen) displayed in a floating panel.
+A macOS menu-bar utility that pairs with Preview.app to provide LLM-powered translation, summarization, and explanation of OCR-extracted text. It captures screen content or selected text via system-wide hotkeys, runs OCR through Apple Vision, and streams the result to a CLI-based LLM (Claude, Codex, Gemini, Qwen, or Apfel) displayed in a floating panel.
 
 ## Key Files
 
@@ -29,7 +29,7 @@ A macOS menu-bar utility that pairs with Preview.app to provide LLM-powered tran
 ### Working In This Directory
 - This is a Swift Package Manager project. Build with `swift build` or `./build.sh` for a full `.app` bundle.
 - The app runs as `LSUIElement` (no Dock icon) — it lives in the menu bar.
-- No external dependencies beyond Apple frameworks. LLM inference is delegated to CLI tools (`claude`, `codex`, `gemini`, `qwen`) already installed on the user's machine.
+- No external dependencies beyond Apple frameworks. LLM inference is delegated to CLI tools (`claude`, `codex`, `gemini`, `qwen`, `apfel`) already installed on the user's machine.
 - Bundle identifier: `com.preview.llm`
 
 ### Build & Run
@@ -72,5 +72,6 @@ swift build                         # debug build only
 - `codex` CLI — OpenAI Codex for LLM inference
 - `gemini` CLI — Google Gemini for LLM inference
 - `qwen` CLI — Qwen Code for LLM inference
+- `apfel` CLI — Apple Intelligence from the command line
 
 <!-- MANUAL: Any manually added notes below this line are preserved on regeneration -->

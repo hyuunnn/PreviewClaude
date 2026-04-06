@@ -13,7 +13,7 @@ All Swift source files for the PreviewLLM application. Contains the app entry po
 | `PreviewLLMApp.swift` | `@main` entry point — `MenuBarExtra` scene, `AppDelegate` with hotkey wiring, screen capture via ScreenCaptureKit, OCR via Vision, clipboard-based text selection via Accessibility API |
 | `ChatViewModel.swift` | MVVM view model — manages message list, spawns CLI processes (`claude`/`codex`), streams stdout into assistant messages, handles image-drop OCR, quick actions (translate/summarize/explain) |
 | `ChatView.swift` | Main SwiftUI view — toolbar, language pickers, quick-action buttons, scrollable message list with bubbles, text input area, image drag-and-drop overlay |
-| `LLMProvider.swift` | `LLMProvider` protocol and concrete implementations (`ClaudeProvider`, `CodexProvider`), plus `LLMProviderRegistry` for lookup |
+| `LLMProvider.swift` | `LLMProvider` protocol and concrete implementations (`ClaudeProvider`, `CodexProvider`, `GeminiProvider`, `QwenProvider`, `ApfelProvider`), plus `LLMProviderRegistry` for lookup |
 | `FloatingPanel.swift` | `NSPanel` subclass for always-on-top floating window; `PanelController` for show/hide/toggle lifecycle |
 | `HotkeyManager.swift` | Singleton that registers four system-wide hotkeys via Carbon Event Manager (`Cmd+Shift+\`, `,`, `.`, `'`) |
 | `RegionCaptureView.swift` | `NSWindow`/`NSView` subclasses for interactive rectangular screen region selection with crosshair cursor and rubber-band drawing |
@@ -45,7 +45,7 @@ All Swift source files for the PreviewLLM application. Contains the app entry po
 ### Testing Requirements
 - No automated tests. Verify manually by building and running the app.
 - After modifying `ChatViewModel`, test all quick actions and direct message sending.
-- After modifying `LLMProvider`, verify CLI invocation with both `claude` and `codex`.
+- After modifying `LLMProvider`, verify CLI invocation with all providers (`claude`, `codex`, `gemini`, `qwen`, `apfel`). Note: `apfel` passes the prompt as a CLI argument (not stdin) via `passesPromptViaArgument`.
 - After modifying `HotkeyManager`, verify all four hotkeys still register and fire.
 
 ### Common Patterns
