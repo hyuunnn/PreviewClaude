@@ -126,7 +126,7 @@ struct ApfelProvider: LLMProvider {
         var args = [String]()
         let sp = systemPrompt.trimmingCharacters(in: .whitespacesAndNewlines)
         if !sp.isEmpty { args += ["-s", sp] }
-        args += ["--stream", "-o", "plain"]
+        args += ["-o", "plain"]
         return args
     }
 
