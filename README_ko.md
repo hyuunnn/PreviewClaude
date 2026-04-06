@@ -20,7 +20,7 @@ OCR로 추출한 텍스트는 잘못된 개행, 누락된 글자, 깨진 단어 
 
 | 이미지 드롭 번역 | 설정 |
 |:---:|:---:|
-| <img src="images/4.png"> | <img src="images/3.png"> |
+| <img src="images/4.png"> | <img src="images/03.png"> |
 
 ## 주요 기능
 

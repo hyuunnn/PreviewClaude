@@ -22,7 +22,7 @@ Vibe coded with **Claude Opus 4.6** via [Claude Code](https://github.com/anthrop
 
 | Image Drop Translate | Settings |
 |:---:|:---:|
-| <img src="images/4.png"> | <img src="images/3.png"> |
+| <img src="images/4.png"> | <img src="images/03.png"> |
 
 ## Features
 
