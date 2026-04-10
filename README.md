@@ -1,6 +1,6 @@
-# PreviewLLM
+# TranslateLLM
 
-A multi-LLM translation panel designed to use on top of macOS Preview app.
+A macOS menu-bar LLM translation panel that works anywhere on your screen.
 
 Supports multiple LLM CLI tools (Claude, Codex, Gemini, Qwen, Apfel, Copilot). No separate API key needed — it reuses your existing CLI authentication.
 
@@ -39,7 +39,7 @@ Vibe coded with **Claude Opus 4.6** via [Claude Code](https://github.com/anthrop
 - **Text-to-Speech** — Read responses aloud using macOS `say` command with adjustable speed. Uses the system default voice — to change it, go to **System Settings > Accessibility > Spoken Content > System Voice**
 - **System Prompt** — Customize translation style (e.g., keep IT terms in original)
 - **Localized UI** — Automatically switches between Korean/English based on system language
-- **Floating Panel** — Always-on-top window for use alongside Preview
+- **Floating Panel** — Always-on-top window for use alongside any app
 
 ## Requirements
 
@@ -60,10 +60,10 @@ Vibe coded with **Claude Opus 4.6** via [Claude Code](https://github.com/anthrop
 bash build.sh
 
 # Run
-open build/PreviewLLM.app
+open build/TranslateLLM.app
 
 # Install (copy to Applications)
-cp -r build/PreviewLLM.app /Applications/
+cp -r build/TranslateLLM.app /Applications/
 ```
 
 ## Permissions
@@ -81,5 +81,5 @@ Permissions can be requested from the app settings (⚙).
 - Requires at least one supported LLM CLI tool installed
 - Claude's `claude -p` usage context: ([Thariq's Post](https://x.com/trq212/status/2024212380142752025), [archive](images/post.png))
 - Capture translate uses the same Vision OCR engine as macOS Live Text
-- Screen capture automatically excludes the PreviewLLM panel, so it works even while the panel is open
+- Screen capture automatically excludes the TranslateLLM panel, so it works even while the panel is open
 

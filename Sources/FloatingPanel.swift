@@ -15,10 +15,10 @@ class FloatingPanel: NSPanel {
         hidesOnDeactivate = false
         collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
         isMovableByWindowBackground = true
-        title = "PreviewLLM"
+        title = "TranslateLLM"
         minSize = NSSize(width: 320, height: 400)
         isReleasedWhenClosed = false
-        setFrameAutosaveName("PreviewLLMPanel")
+        setFrameAutosaveName("TranslateLLMPanel")
         center()
     }
 

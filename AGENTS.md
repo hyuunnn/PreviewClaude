@@ -1,9 +1,9 @@
 <!-- Generated: 2026-04-04 | Updated: 2026-04-04 -->
 
-# PreviewLLM
+# TranslateLLM
 
 ## Purpose
-A macOS menu-bar utility that pairs with Preview.app to provide LLM-powered translation, summarization, and explanation of OCR-extracted text. It captures screen content or selected text via system-wide hotkeys, runs OCR through Apple Vision, and streams the result to a CLI-based LLM (Claude, Codex, Gemini, Qwen, or Apfel) displayed in a floating panel.
+A macOS menu-bar utility that provides LLM-powered translation, summarization, and explanation of OCR-extracted text. It captures screen content or selected text via system-wide hotkeys, runs OCR through Apple Vision, and streams the result to a CLI-based LLM (Claude, Codex, Gemini, Qwen, or Apfel) displayed in a floating panel.
 
 ## Key Files
 
@@ -30,12 +30,12 @@ A macOS menu-bar utility that pairs with Preview.app to provide LLM-powered tran
 - This is a Swift Package Manager project. Build with `swift build` or `./build.sh` for a full `.app` bundle.
 - The app runs as `LSUIElement` (no Dock icon) — it lives in the menu bar.
 - No external dependencies beyond Apple frameworks. LLM inference is delegated to CLI tools (`claude`, `codex`, `gemini`, `qwen`, `apfel`) already installed on the user's machine.
-- Bundle identifier: `com.preview.llm`
+- Bundle identifier: `com.translate.llm`
 
 ### Build & Run
 ```bash
 ./build.sh                          # builds release .app bundle
-open build/PreviewLLM.app           # launch
+open build/TranslateLLM.app           # launch
 swift build                         # debug build only
 ```
 

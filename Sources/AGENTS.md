@@ -4,13 +4,13 @@
 # Sources
 
 ## Purpose
-All Swift source files for the PreviewLLM application. Contains the app entry point, MVVM architecture (view + view model), LLM provider abstraction, floating panel window management, system-wide hotkey registration, screen region capture, settings UI, and localization helpers.
+All Swift source files for the TranslateLLM application. Contains the app entry point, MVVM architecture (view + view model), LLM provider abstraction, floating panel window management, system-wide hotkey registration, screen region capture, settings UI, and localization helpers.
 
 ## Key Files
 
 | File | Description |
 |------|-------------|
-| `PreviewLLMApp.swift` | `@main` entry point — `MenuBarExtra` scene, `AppDelegate` with hotkey wiring, screen capture via ScreenCaptureKit, OCR via Vision, clipboard-based text selection via Accessibility API |
+| `TranslateLLMApp.swift` | `@main` entry point — `MenuBarExtra` scene, `AppDelegate` with hotkey wiring, screen capture via ScreenCaptureKit, OCR via Vision, clipboard-based text selection via Accessibility API |
 | `ChatViewModel.swift` | MVVM view model — manages message list, spawns CLI processes (`claude`/`codex`), streams stdout into assistant messages, handles image-drop OCR, quick actions (translate/summarize/explain) |
 | `ChatView.swift` | Main SwiftUI view — toolbar, language pickers, quick-action buttons, scrollable message list with bubbles, text input area, image drag-and-drop overlay |
 | `LLMProvider.swift` | `LLMProvider` protocol and concrete implementations (`ClaudeProvider`, `CodexProvider`, `GeminiProvider`, `QwenProvider`, `ApfelProvider`), plus `LLMProviderRegistry` for lookup |

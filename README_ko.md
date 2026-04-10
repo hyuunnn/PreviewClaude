@@ -1,6 +1,6 @@
-# PreviewLLM
+# TranslateLLM
 
-macOS 미리보기(Preview) 앱 위에서 사용하기 위한 멀티 LLM 번역 패널입니다.
+macOS 화면 어디서든 사용할 수 있는 멀티 LLM 번역 패널입니다.
 
 여러 LLM CLI 도구(Claude, Codex, Gemini, Qwen, Apfel, Copilot)를 지원하며, 별도 API 키 없이 기존 CLI 인증을 그대로 사용합니다.
 
@@ -37,7 +37,7 @@ OCR로 추출한 텍스트는 잘못된 개행, 누락된 글자, 깨진 단어 
 - **음성 읽기 (TTS)** — macOS `say` 명령어로 응답을 소리 내어 읽어줍니다. 속도 조절 가능. 시스템 기본 음성을 사용하며, 음성을 변경하려면 **시스템 설정 > 손쉬운 사용 > 읽기 및 말하기 > 시스템 음성**에서 변경할 수 있습니다
 - **시스템 프롬프트** — 번역 스타일 커스텀 가능 (ex: IT 용어 원문 유지)
 - **다국어 UI** — 시스템 언어에 따라 한국어/영어 자동 전환
-- **플로팅 패널** — 항상 위에 떠 있어 미리보기와 함께 사용 가능
+- **플로팅 패널** — 항상 위에 떠 있어 어떤 앱과도 함께 사용 가능
 
 ## 요구사항
 
@@ -58,10 +58,10 @@ OCR로 추출한 텍스트는 잘못된 개행, 누락된 글자, 깨진 단어 
 bash build.sh
 
 # 실행
-open build/PreviewLLM.app
+open build/TranslateLLM.app
 
 # 설치 (Applications 폴더로 복사)
-cp -r build/PreviewLLM.app /Applications/
+cp -r build/TranslateLLM.app /Applications/
 ```
 
 ## 권한 설정
@@ -79,5 +79,5 @@ cp -r build/PreviewLLM.app /Applications/
 - 지원되는 LLM CLI 도구 중 하나 이상 설치 필요
 - Claude의 `claude -p` 사용 관련: ([Thariq's Post](https://x.com/trq212/status/2024212380142752025), [archive](images/post.png))
 - 화면 캡처 번역은 macOS의 Live Text와 동일한 Vision OCR 엔진을 사용합니다
-- 화면 캡처 시 PreviewLLM 패널은 자동으로 제외되므로, 패널을 열어놓은 상태에서도 캡처가 가능합니다
+- 화면 캡처 시 TranslateLLM 패널은 자동으로 제외되므로, 패널을 열어놓은 상태에서도 캡처가 가능합니다
 

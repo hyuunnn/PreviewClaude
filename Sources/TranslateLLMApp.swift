@@ -3,11 +3,11 @@ import ApplicationServices
 import ScreenCaptureKit
 
 @main
-struct PreviewLLMApp: App {
+struct TranslateLLMApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {
-        MenuBarExtra("PreviewLLM", systemImage: "text.bubble") {
+        MenuBarExtra("TranslateLLM", systemImage: "text.bubble") {
             Button("⌘⇧\\  \(L("menu.toggle"))") {
                 appDelegate.panelController.toggle()
             }
