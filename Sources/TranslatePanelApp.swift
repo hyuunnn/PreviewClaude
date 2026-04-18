@@ -151,10 +151,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private static func getSelectedText() -> String? {
         let systemWide = AXUIElementCreateSystemWide()
         var focusedElement: CFTypeRef?
-        guard AXUIElementCopyAttributeValue(systemWide, kAXFocusedUIElementAttribute as CFString, &focusedElement) == .success else {
+        guard AXUIElementCopyAttributeValue(systemWide, kAXFocusedUIElementAttribute as CFString, &focusedElement) == .success,
+              let raw = focusedElement,
+              CFGetTypeID(raw) == AXUIElementGetTypeID() else {
             return nil
         }
-        let focused = focusedElement as! AXUIElement
+        let focused = raw as! AXUIElement
         var selectedText: CFTypeRef?
         guard AXUIElementCopyAttributeValue(focused, kAXSelectedTextAttribute as CFString, &selectedText) == .success else {
             return nil
