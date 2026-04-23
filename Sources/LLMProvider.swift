@@ -77,7 +77,9 @@ struct GeminiProvider: LLMProvider {
         let sp = systemPrompt.trimmingCharacters(in: .whitespacesAndNewlines)
         var args = [String]()
         if !sp.isEmpty { args += ["-p", sp] }
-        args += ["--output-format", "text"]
+        // Dummy allowlist name disables all MCP servers — translation doesn't need them,
+        // and any MCP connection failure would pollute stdout with warnings.
+        args += ["--output-format", "text", "--allowed-mcp-server-names", "foobarbaz"]
         if !model.isEmpty { args += ["-m", model] }
         return args
     }
