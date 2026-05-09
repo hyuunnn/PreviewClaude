@@ -50,6 +50,7 @@ Vibe coded with **Claude Opus 4.6** via [Claude Code](https://github.com/anthrop
   - [Codex CLI](https://github.com/openai/codex) (`codex`)
   - [Gemini CLI](https://github.com/google-gemini/gemini-cli) (`gemini`)
   - [LM Studio](https://lmstudio.ai/) (`lms` — bootstrap with `lms bootstrap` after installing LM Studio, then load a model in the app)
+    - Recommended models: gemma4 e4b, 31b ([reference](https://github.com/vEduardovich/dodari#system-requirements))
   - [Copilot CLI](https://github.com/github/copilot-cli) (`copilot`)
   - [Apfel CLI](https://github.com/Arthur-Ficial/apfel) (`apfel`)
 - Swift 5.10+
@@ -82,11 +83,6 @@ These apps work great with TranslatePanel:
 
 - [Skim](https://skim-app.sourceforge.io/)
 - [Zotero](https://www.zotero.org/)
-
-## Recommended Models
-
-- LM Studio
-  - gemma4 e4b, 31b ([reference](https://github.com/vEduardovich/dodari#system-requirements))
 
 ## Limitations
 

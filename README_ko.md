@@ -48,6 +48,7 @@ OCR로 추출한 텍스트는 잘못된 개행, 누락된 글자, 깨진 단어 
   - [Codex CLI](https://github.com/openai/codex) (`codex`)
   - [Gemini CLI](https://github.com/google-gemini/gemini-cli) (`gemini`)
   - [LM Studio](https://lmstudio.ai/) (`lms` — LM Studio 설치 후 `lms bootstrap`으로 CLI를 활성화하고, 앱에서 모델을 로드)
+    - 추천 모델: gemma4 e4b, 31b ([참고](https://github.com/vEduardovich/dodari#system-requirements))
   - [Copilot CLI](https://github.com/github/copilot-cli) (`copilot`)
   - [Apfel CLI](https://github.com/Arthur-Ficial/apfel) (`apfel`)
 - Swift 5.10+
@@ -80,11 +81,6 @@ TranslatePanel과 함께 사용하기 좋은 앱입니다:
 
 - [Skim](https://skim-app.sourceforge.io/)
 - [Zotero](https://www.zotero.org/)
-
-## 추천 모델
-
-- LM Studio
-  - gemma4 e4b, 31b ([참고](https://github.com/vEduardovich/dodari#system-requirements))
 
 ## 제한사항
 
